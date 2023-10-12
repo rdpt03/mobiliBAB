@@ -1,6 +1,8 @@
 <?php
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -15,7 +17,7 @@ class TypeUser {
     #[ORM\Column(type: "string")]
     protected $libelleTU;
     
-    #[ORM\OneToMany(targetEntity:"User", mappedBy:"lesUsers")]
+    #[ORM\OneToMany(targetEntity:"User", mappedBy:"lesTypesUsers")]
     private ?Collection $lesUsers;
 
     public function getId(): int {

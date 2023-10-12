@@ -6,34 +6,38 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\FloatType;
 
-#[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: 'formule')]
+
+#[ORM\Entity]
+#[ORM\Table(name:'formule')]
 class Formule {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type:"integer")]
     protected $id;
     
     #[ORM\Column(type:"string",nullable:true)]
     protected string $nomF;
     
-    #[ORM\Column(type: "int",nullable:true)]
-    protected int $prixAbo;
+    #[ORM\Column(type:"float",nullable:true)]
+    protected float $prixAbo;
 
-    #[ORM\ManyToOne(targetEntity:"Vehicules", mappedBy:"lesFormules")]
+    #[ORM\ManyToMany(targetEntity:"Vehicule", inversedBy:"lesFormules")]
     protected $lesVehicules; //LIASON vers Vehicule 0*
     
-    #[ORM\OneToMany(targetEntity:"Catalogues", mappedBy:"lesFormules")]
+    #[ORM\ManyToMany(targetEntity:"Catalogue", inversedBy:"lesFormules")]
     protected $lesCataloguesNecessaires;//LIASON VERS Catalogue 0*
     
-    #[ORM\OneToMany(targetEntity:"Achat", mappedBy:"laFormule")]
+    #[ORM\OneToMany(targetEntity:"Souscrire", mappedBy:"lesFormules")]
     protected $lesSouscriptions; //LIASON VERS Souscrire 0*
     
 
     //CONSTRUCT
     public function __construct() {
-        $this->lesVehicules = array();
+        $this->lesVehicules = new ArrayCollection();
         $this->lesCataloguesNecessaires = new ArrayCollection();
         $this->lesSouscriptions = new ArrayCollection();
     }
@@ -91,9 +95,10 @@ class Formule {
     }
 
     
+    
     //TOSTRING
     public function __toString() {
-        return $this->nom+" "+$ths->prixAbo;
+        return $this->nom+" "+ $this->prixAbo;
     }
 
 

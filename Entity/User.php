@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -25,6 +28,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+    
+     #[ORM\Column(type:"string",nullable:true)]
+    private ?string $RIB;
+     
+      #[ORM\Column(type:"date",nullable:true)]
+    private  $dateNaissance;
     
     #[ORM\ManyToOne(targetEntity:"TypeUser", inversedBy:"lesUsers")]
     private ?TypeUser $leTypeUser;
@@ -131,5 +140,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLesAchats(?Collection $lesAchats): void {
         $this->lesAchats = $lesAchats;
     }
+
+    
+    public function getRIB(): ?string {
+        return $this->RIB;
+    }
+
+    public function setRIB(?string $RIB): void {
+        $this->RIB = $RIB;
+    }
+
+    public function getDateNaissance() {
+        return $this->dateNaissance;
+    }
+
+    public function setDateNaissance($dateNaissance): void {
+        $this->dateNaissance = $dateNaissance;
+    }
+
+
 
 }

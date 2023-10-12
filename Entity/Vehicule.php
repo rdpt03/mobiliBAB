@@ -5,6 +5,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
+#[ORM\Entity]
+#[ORM\Table(name: "vehicule")]
 class Vehicule {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,7 +20,7 @@ class Vehicule {
     #[ORM\Column(type:"string")]
     private $typeV;
         
-    #[ORM\OneToMany(targetEntity:"Formule", mappedBy:"lesVehicule")]
+    #[ORM\ManyToMany(targetEntity:"Formule", mappedBy:"lesVehicule")]
     protected ?Collection $lesFormules;
 
     

@@ -5,18 +5,19 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\FloatType;
 
 
 #[ORM\Entity]
 #[ORM\Table(name:"catalogue")]
-class Test{
+class Catalogue{
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type:"integer")]
     private int $id;
     
-    #[ORM\Column(type:"integer",nullable:true)]
-    private ?int $PrixCatalogue;
+    #[ORM\Column(type:"float",nullable:true)]
+    private ?float $PrixCatalogue;
     
     #[ORM\Column(type:"string",nullable:true)]
     private $libelleCatalogue;
@@ -31,6 +32,7 @@ class Test{
     private ?Collection $lesFormules;
     
     function __construct() {
+        $this->lesAchats = new ArrayCollection();
         $this->lesFormules = new ArrayCollection();
     }
     
