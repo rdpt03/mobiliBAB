@@ -17,7 +17,7 @@ class Vehicule {
     #[ORM\Column(type:"string")]
     private $typeV;
         
-    #[ORM\OneToMany(targetEntity:"Formule", mappedBy:"leVehicule")]
+    #[ORM\OneToMany(targetEntity:"Formule", mappedBy:"lesVehicule")]
     protected ?Collection $lesFormules;
 
     

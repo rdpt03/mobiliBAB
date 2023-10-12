@@ -1,8 +1,8 @@
 <?php
-//FAIT PAR RAFAEL DA SILVA 
+
 namespace App\Entity;
 #[ORM\Entity]
-#[ORM\Table(name: "reductions")]
+#[ORM\Table(name: "reduction")]
 
 
 class Reductions
@@ -11,9 +11,9 @@ class Reductions
     #[ORM\GeneratedValue]
     #[ORM\Column(type: "integer")]
     private $id;
-    #[ORM\Column(type: "datetime")]
+    #[ORM\Column(type: "date")]
     private $ageDebutReduc;
-    #[ORM\Column(type: "datetime")]
+    #[ORM\Column(type: "date")]
     private $ageFinReduc;
     #[ORM\Column(type: "double")]
     private $montantReduc;
