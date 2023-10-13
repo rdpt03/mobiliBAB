@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+        
+{% block clientIndex %}
+    Page d'index
+{% endblock %}
+
+{% block body %}
+    {% include "client/navbar.html.twig" %}
+    <div class="container p-3 my-3 border">
+        <center><h2>Ma liste des titres et abonnements</h2></center>
+    </div>
+    <h5>titres</h(>
+    <ul>
+        {% for titre in listeDesTitres %}
+            <li>{{ titre }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h5>abonnements</h5>
+    <ul>    
+        {% for abonnement in listeDesAbonnements %}
+            <li>{{ abonnement }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+        <style type="text/css">
+            #image{
+                height : 130px;
+                background-image : url({{ asset('images/logo.png') }});
+                background-repeat : no-repeat no-repeat;
+                background-position : right top;
+            }
+            #titre{
+                text-align : right;
+            }
+
+            #barrenav{
+                background-color : #A9BC3B;
+            }
+
+            .btn-primary.custom-btn {
+                background-color: #2C6489;
+                border-color: #2C6489;
+            }
+
+        </style>
+    </head>
+    <body>
+        
+        {% block body %}{% endblock %}
+    </body>
+</html>
