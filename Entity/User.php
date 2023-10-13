@@ -38,9 +38,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(targetEntity:"TypeUser", inversedBy:"lesUsers")]
     private ?TypeUser $leTypeUser;
     
-    #[ORM\OneToMany(targetEntity:"Achat", mappedBy:"lesUsers")]
+    #[ORM\OneToMany(targetEntity:"Achat", mappedBy:"leUser")]
     private ?Collection $lesAchats;
     
+        #[ORM\OneToMany(targetEntity:"Souscrire", mappedBy:"leUser")]
+    protected $lesSouscriptions; //LIASON VERS Souscrire 0*
+
     function __construct() {
         $this->lesAchats = new ArrayCollection();
     }
@@ -118,11 +121,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
     
         public function getUnTypeUser() {
-        return $this->unTypeUser;
+        return $this->leTypeUser;
     }
 
     public function setUnTypeUser($unTypeUser): void {
-        $this->unTypeUser = $unTypeUser;
+        $this->leTypeUser = $unTypeUser;
     }
     
     public function getLeTypeUser(): ?TypeUser {
@@ -156,6 +159,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setDateNaissance($dateNaissance): void {
         $this->dateNaissance = $dateNaissance;
+    }
+
+    public function getLesSouscriptions() {
+        return $this->lesSouscriptions;
+    }
+
+    public function setLesSouscriptions($lesSouscriptions): void {
+        $this->lesSouscriptions = $lesSouscriptions;
     }
 
 

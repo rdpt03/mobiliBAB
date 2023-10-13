@@ -25,10 +25,10 @@ class Catalogue{
     
     //CONNECTIONS
     
-    #[ORM\OneToMany(targetEntity:"Achat", mappedBy:"lesCatalogues")]
+    #[ORM\OneToMany(targetEntity:"Achat", mappedBy:"leCatalogue")]
     private ?Collection $lesAchats;
     
-    #[ORM\ManyToMany(targetEntity:"Formule", mappedBy:"lesCatalogues")]
+    #[ORM\ManyToMany(targetEntity:"Formule", mappedBy:"lesCataloguesNecessaires")]
     private ?Collection $lesFormules;
     
     function __construct() {

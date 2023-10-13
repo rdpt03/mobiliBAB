@@ -20,7 +20,7 @@ class Vehicule {
     #[ORM\Column(type:"string")]
     private $typeV;
         
-    #[ORM\ManyToMany(targetEntity:"Formule", mappedBy:"lesVehicule")]
+    #[ORM\ManyToMany(targetEntity:"Formule", mappedBy:"leVehicule")]
     protected ?Collection $lesFormules;
 
     

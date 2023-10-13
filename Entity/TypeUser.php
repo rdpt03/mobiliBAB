@@ -17,7 +17,7 @@ class TypeUser {
     #[ORM\Column(type: "string")]
     protected $libelleTU;
     
-    #[ORM\OneToMany(targetEntity:"User", mappedBy:"lesTypesUsers")]
+    #[ORM\OneToMany(targetEntity:"User", mappedBy:"leTypeUser")]
     private ?Collection $lesUsers;
 
     public function getId(): int {

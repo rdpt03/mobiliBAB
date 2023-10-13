@@ -56,7 +56,7 @@ class Achat {
 
     
     public function __toString() {
-        return $this->id." ".$this->dateA;
+        return $this->id." ".$this->dateA->format("Y-m-d");
     }
 
 

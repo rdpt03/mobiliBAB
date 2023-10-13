@@ -31,7 +31,7 @@ class Formule {
     #[ORM\ManyToMany(targetEntity:"Catalogue", inversedBy:"lesFormules")]
     protected $lesCataloguesNecessaires;//LIASON VERS Catalogue 0*
     
-    #[ORM\OneToMany(targetEntity:"Souscrire", mappedBy:"lesFormules")]
+    #[ORM\OneToMany(targetEntity:"Souscrire", mappedBy:"laFormule")]
     protected $lesSouscriptions; //LIASON VERS Souscrire 0*
     
 

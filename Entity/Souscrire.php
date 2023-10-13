@@ -65,6 +65,6 @@ class Souscrire {
 
     
         public function __toString() {
-        return $this->getLibelleTU();
+        return $this->getId()." ".$this->getDateDebutValid()->format("Y-m-d")." ".$this->getDateFinValid()->format("Y-m-d");
     }
 }
